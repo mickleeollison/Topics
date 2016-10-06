@@ -1,0 +1,64 @@
+﻿@model Topics.Web.ViewModels.TopicVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Topic</h4>
+    <hr />
+    @{
+        if (Model != null)
+        {
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsActive)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+            </dl>
+            <table class="table">
+                <tr>
+                    <th>Date Created</th>
+                    <th>Post Name</th>
+                    <th>Mini Description</th>
+                    <th>Post Creator</th>
+                    <th>View Post Details</th>
+                </tr>
+
+                @foreach (var post in ViewBag.Posts)
+                {
+                    <tr>
+                        <td>@post.DateCreated</td>
+                        <td>@post.Name</td>
+                        <td>@post.ShortDescription</td>
+                        <td>@post.User.UserName</td>
+                        <td>@Html.ActionLink("Details", "Details", "Posts", new { id = @post.PostID }, null)</td>
+                    </tr>
+                }
+            </table>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.TopicID })
+            </p>
+        }
+        else
+        {
+            <h3>Sorry, this topic has been removed</h3>
+        }
+    }
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

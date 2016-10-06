@@ -1,0 +1,17 @@
+﻿@{
+    if (ViewBag.User == null)
+    {
+        <h1>You aren't logged in</h1>
+    }
+    else
+    {
+        <h1>You Are Logged in as <b>@ViewBag.User.UserName</b></h1>
+        <h5>@Html.ActionLink("Log Off", "Logoff", "Login")</h5>
+    }
+}
+
+<div class="jumbotron">
+    <h1>TOPICS</h1>
+    <p class="lead">Welcome to topics a minimalistic version of Reddit!</p>
+    <p><a href="/Topics/Index" class="btn btn-primary btn-lg">View Topics &raquo;</a></p>
+</div>

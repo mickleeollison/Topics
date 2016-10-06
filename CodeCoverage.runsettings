@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- File name extension must be .runsettings -->
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="Code Coverage" uri="datacollector://Microsoft/CodeCoverage/2.0" assemblyQualifiedName="Microsoft.VisualStudio.Coverage.DynamicCoverageDataCollector, Microsoft.VisualStudio.TraceCollector, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+        <Configuration>
+          <CodeCoverage>
+            <!--
+            <ModulePaths>
+              <Include>
+                <ModulePath>.*Topics.*</ModulePath>
+              </Include>
+              <Exclude>
+                <ModulePath>UnitTest.*</ModulePath>
+              </Exclude>
+            </ModulePaths>
+            -->
+            <Functions>
+              <Include>
+                <Function>^Topics.Data.Repositories\..*</Function>
+                <Function>^Topics.Services.Services\..*</Function>
+                <Function>^Topics.Web.Controllers\..*</Function>
+              </Include>
+              <!--<Exclude>
+                <Function>^Topics.Core.Ioc\..*</Function>
+                <Function>^Topics.Core.Models\..*</Function>
+                <Function>^Topics.Core.Constants\..*</Function>
+                <Function>^Topics.Core.ApplicationSettings\..*</Function>
+                <Function>^Topics.Core.Enums\..*</Function>
+                <Function>^Topics.Core.Mappers\..*</Function>
+                <Function>^Topics.Core.Exceptions\..*</Function>
+                <Function>^Topics.Core.Utilities\..*</Function>
+
+                <Function>^Topics.Data.DAL\..*</Function>
+                <Function>^Topics.Data.Entities\..*</Function>
+                <Function>^Topics.Data.Migrations\..*</Function>
+                <Function>^Topics.Data.Ioc\..*</Function>
+                <Function>^Topics.Data.Mappers\..*</Function>
+
+                <Function>^Topics.Services.Ioc\..*</Function>
+                <Function>^Topics.Services.Mappers\..*</Function>
+
+                <Function>^Topics.Web.Areas\..*</Function>
+                <Function>^Topics.Web.App_Data\..*</Function>
+                <Function>^Topics.Web.App_Start\..*</Function>
+                <Function>^Topics.Web.Ioc\..*</Function>
+                <Function>^Topics.Web.ViewModels\..*</Function>
+                <Function>^Topics.Web.Mappers\..*</Function>
+                <Function>^Topics.Web.Filters\..*</Function>
+
+                <Function>*\.*Interfaces\..*</Function>
+                <Function>*\.*interfaces\..*</Function>
+              </Exclude>
+              -->
+              <Exclude>
+                <Function>^Topics.Data.Repositories.UnitOfWork.*</Function>
+              </Exclude>
+            </Functions>
+
+            <UseVerifiableInstrumentation>True</UseVerifiableInstrumentation>
+            <AllowLowIntegrityProcesses>True</AllowLowIntegrityProcesses>
+            <CollectFromChildProcesses>True</CollectFromChildProcesses>
+            <CollectAspDotNet>False</CollectAspDotNet>
+          </CodeCoverage>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

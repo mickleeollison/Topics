@@ -1,0 +1,75 @@
+﻿@model Topics.Core.Models.UserRef
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        function ismatched() {
+            if ($("#confirm-password input").val() == $("#password input").val()) {
+                $('input[type="submit"]').prop('disabled', false);
+            } else {
+                $('input[type="submit"]').prop('disabled', true);
+            }
+        }
+        ismatched();
+        $("#confirm-password").on('keyup change', function () {
+            ismatched();
+        });
+        $("#password").on('keyup change', function () {
+            ismatched();
+        });
+    });
+</script>
+
+@using (Html.BeginForm("Register", "Register"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>UserVM</h4>
+        @{
+            if (ViewBag.Error != null)
+            {
+                <h3 class="text-danger">@Html.Raw(ViewBag.Error)</h3>
+            }
+        }
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoleID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("RoleId", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select a role", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" type="password" id="password">
+                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control password" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Confirm Password</label>
+            <div class="col-md-10" id="confirm-password">
+                <input type="password" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Register" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+            }
+<div>
+    @Html.ActionLink("Back to Index", "Index")
+</div>
